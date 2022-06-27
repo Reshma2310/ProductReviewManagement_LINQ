@@ -66,12 +66,12 @@ namespace ProductReviewManagement_LINQ
                      item.Review + "\tIsLike: " + item.IsLike);
             }
         }        
-        public void CreateDataTable(List<ProductReviewModel> product)
+        public DataTable CreateDataTable(List<ProductReviewModel> product)
         {
             DataTable table = new DataTable();
             table.Columns.Add("ProductId", typeof(Int32));
             table.Columns.Add("UserId", typeof(Int32));
-            table.Columns.Add("Rating", typeof(Int32));
+            table.Columns.Add("Rating", typeof(Double));
             table.Columns.Add("Review", typeof(string));
             table.Columns.Add("IsLike", typeof(bool));
             foreach (var item in product)
@@ -82,19 +82,18 @@ namespace ProductReviewManagement_LINQ
             Console.WriteLine("ProductId\tUserId\tRating\tReview\tIsLike");
             foreach (var item in table.AsEnumerable())
             {
-                Console.WriteLine( "\t" + item.Field<int>("ProductId") + "\t" + item.Field<int>("UserId") + "\t" + item.Field<int>("Rating") + "\t" + item.Field<string>("Review") + "\t" + item.Field<bool>("IsLike"));
+                Console.WriteLine( "\t" + item.Field<int>("ProductId") + "\t" + item.Field<int>("UserId") + "\t" + item.Field<double>("Rating") + "\t" + item.Field<string>("Review") + "\t" + item.Field<bool>("IsLike"));
             }
+            return table;
         }
-        public void TrueInIsLike(List<ProductReviewModel> product)
-        {
-            var result = (from list in product
-                          where (list.IsLike == true)
-                          select list);
+        public void TrueInIsLike(DataTable product)
+        {            
+            var data = product.AsEnumerable().Where(x => (x.Field<bool>("IsLike") == true));
             Console.WriteLine("ProductId\tUserId\tRating\tReview\tIsLike");
-            foreach (var item in result)
+            foreach (var item in data)
             {
-                Console.WriteLine("\t" + item.ProductId + "\t" + item.UserId + "\t"
-            + item.Rating + "\t" + item.Review + "\t" + item.IsLike);
+                Console.WriteLine("\t" + item.Field<int>("ProductId") + "\t" + item.Field<int>("UserId") + "\t" +
+                    item.Field<double>("Rating") + "\t" + item.Field<string>("Review") + "\t" + item.Field<bool>("IsLike"));
             }
         }
     }

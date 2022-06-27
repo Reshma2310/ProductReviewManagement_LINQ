@@ -45,8 +45,8 @@ namespace ProductReviewManagement_LINQ
             //reviewManagement.ProductIdAndReview(product);
             //reviewManagement.SkipTop5Records(product);
             //reviewManagement.CreateDataTable(product);            
-            //DataTable table = reviewManagement.CreateDataTable(product);
-            reviewManagement.TrueInIsLike(product);
+            DataTable table = reviewManagement.CreateDataTable(product);
+            reviewManagement.TrueInIsLike(table);
         }
     }
 }
