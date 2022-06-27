@@ -42,7 +42,8 @@ namespace ProductReviewManagement_LINQ
             //reviewManagement.TopThreeRecordsOfAll(product);
             //reviewManagement.ListOfReviewGreaterThan3(product);
             //reviewManagement.CountOfReview(product);
-            reviewManagement.ProductIdAndReview(product);
+            //reviewManagement.ProductIdAndReview(product);
+            reviewManagement.SkipTop5Records(product);
         }
     }
 }
