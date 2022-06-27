@@ -69,11 +69,11 @@ namespace ProductReviewManagement_LINQ
         public void CreateDataTable(List<ProductReviewModel> product)
         {
             DataTable table = new DataTable();
-            table.Columns.Add("ProductID", typeof(Int32));
-            table.Columns.Add("UserID", typeof(Int32));
+            table.Columns.Add("ProductId", typeof(Int32));
+            table.Columns.Add("UserId", typeof(Int32));
             table.Columns.Add("Rating", typeof(Int32));
             table.Columns.Add("Review", typeof(string));
-            table.Columns.Add("isLike", typeof(bool));
+            table.Columns.Add("IsLike", typeof(bool));
             foreach (var item in product)
             {
                 table.Rows.Add(item.ProductId, item.UserId, item.Rating, item.Review, item.IsLike);
@@ -83,6 +83,18 @@ namespace ProductReviewManagement_LINQ
             foreach (var item in table.AsEnumerable())
             {
                 Console.WriteLine( "\t" + item.Field<int>("ProductId") + "\t" + item.Field<int>("UserId") + "\t" + item.Field<int>("Rating") + "\t" + item.Field<string>("Review") + "\t" + item.Field<bool>("IsLike"));
+            }
+        }
+        public void TrueInIsLike(List<ProductReviewModel> product)
+        {
+            var result = (from list in product
+                          where (list.IsLike == true)
+                          select list);
+            Console.WriteLine("ProductId\tUserId\tRating\tReview\tIsLike");
+            foreach (var item in result)
+            {
+                Console.WriteLine("\t" + item.ProductId + "\t" + item.UserId + "\t"
+            + item.Rating + "\t" + item.Review + "\t" + item.IsLike);
             }
         }
     }
