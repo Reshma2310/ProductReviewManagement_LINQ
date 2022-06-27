@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace ProductReviewManagement_LINQ
 {
@@ -64,14 +65,24 @@ namespace ProductReviewManagement_LINQ
                 Console.WriteLine("ProductId: " + item.ProductId + "\tUserId: " + item.UserId + "\tRating: " + item.Rating + "\tReview: " +
                      item.Review + "\tIsLike: " + item.IsLike);
             }
-        }
-        public void ProductIdAndReviewLINQ(List<ProductReviewModel> product)
+        }        
+        public void CreateDataTable(List<ProductReviewModel> product)
         {
-            var result = product.Select(x => (x.ProductId, x.Review));
-            Console.WriteLine("Product ID\tReview");
-            foreach (var item in result)
+            DataTable table = new DataTable();
+            table.Columns.Add("ProductID", typeof(Int32));
+            table.Columns.Add("UserID", typeof(Int32));
+            table.Columns.Add("Rating", typeof(Int32));
+            table.Columns.Add("Review", typeof(string));
+            table.Columns.Add("isLike", typeof(bool));
+            foreach (var item in product)
             {
-                Console.WriteLine("\t" + item.ProductId + "\t" + item.Review);
+                table.Rows.Add(item.ProductId, item.UserId, item.Rating, item.Review, item.IsLike);
+            }
+            Console.WriteLine("Records in DataTable.");
+            Console.WriteLine("ProductId\tUserId\tRating\tReview\tIsLike");
+            foreach (var item in table.AsEnumerable())
+            {
+                Console.WriteLine( "\t" + item.Field<int>("ProductId") + "\t" + item.Field<int>("UserId") + "\t" + item.Field<int>("Rating") + "\t" + item.Field<string>("Review") + "\t" + item.Field<bool>("IsLike"));
             }
         }
     }
