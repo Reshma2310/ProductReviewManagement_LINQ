@@ -28,9 +28,9 @@ namespace ProductReviewManagement_LINQ
                 new ProductReviewModel() { ProductId = 15, UserId = 26, Rating = 2, Review = "Nice", IsLike = true },
                 new ProductReviewModel() { ProductId = 16, UserId = 8, Rating = 4, Review = "Better", IsLike = false },
                 new ProductReviewModel() { ProductId = 17, UserId = 18, Rating = 5, Review = "Best", IsLike = true },
-                new ProductReviewModel() { ProductId = 18, UserId = 9, Rating = 3, Review = "Good", IsLike = true },
+                new ProductReviewModel() { ProductId = 9, UserId = 9, Rating = 3, Review = "Good", IsLike = true },
                 new ProductReviewModel() { ProductId = 19, UserId = 10, Rating = 2, Review = "Nice", IsLike = true },
-                new ProductReviewModel() { ProductId = 20, UserId = 7, Rating = 1, Review = "Bad", IsLike = true },
+                new ProductReviewModel() { ProductId = 6, UserId = 7, Rating = 1, Review = "Bad", IsLike = true },
                 new ProductReviewModel() { ProductId = 21, UserId = 6, Rating = 1, Review = "Bad", IsLike = false },
                 new ProductReviewModel() { ProductId = 22, UserId = 5, Rating = 3, Review = "Good", IsLike = true },
                 new ProductReviewModel() { ProductId = 23, UserId = 10, Rating = 3, Review = "Good", IsLike = true },
@@ -40,7 +40,8 @@ namespace ProductReviewManagement_LINQ
             ProductReviewManagement_LINQ.ReviewManagementClass reviewManagement = new ProductReviewManagement_LINQ.ReviewManagementClass();
             //reviewManagement.GetReview(product);
             //reviewManagement.TopThreeRecordsOfAll(product);
-            reviewManagement.ListOfReviewGreaterThan3(product);            
+            //reviewManagement.ListOfReviewGreaterThan3(product);
+            reviewManagement.CountOfReview(product);
         }
     }
 }
