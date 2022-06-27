@@ -19,7 +19,7 @@ namespace ProductReviewManagement_LINQ
                 new ProductReviewModel() { ProductId = 6, UserId = 7, Rating = 2, Review = "Nice", IsLike = true },
                 new ProductReviewModel() { ProductId = 7, UserId = 6, Rating = 5, Review = "Best", IsLike = true },
                 new ProductReviewModel() { ProductId = 8, UserId = 5, Rating = 3, Review = "Good", IsLike = true },
-                new ProductReviewModel() { ProductId = 9, UserId = 8, Rating = 3, Review = "Good", IsLike = true },
+                new ProductReviewModel() { ProductId = 9, UserId = 4, Rating = 3, Review = "Good", IsLike = true },
                 new ProductReviewModel() { ProductId = 10, UserId = 10, Rating = 5, Review = "Best", IsLike = false },
                 new ProductReviewModel() { ProductId = 11, UserId = 5, Rating = 2, Review = "Nice", IsLike = true },
                 new ProductReviewModel() { ProductId = 12, UserId = 4, Rating = 4, Review = "Better", IsLike = true },
@@ -39,7 +39,8 @@ namespace ProductReviewManagement_LINQ
             };
             ProductReviewManagement_LINQ.ReviewManagementClass reviewManagement = new ProductReviewManagement_LINQ.ReviewManagementClass();
             //reviewManagement.GetReview(product);
-            reviewManagement.TopThreeRecordsOfAll(product);
+            //reviewManagement.TopThreeRecordsOfAll(product);
+            reviewManagement.ListOfReviewGreaterThan3(product);
         }
     }
 }
