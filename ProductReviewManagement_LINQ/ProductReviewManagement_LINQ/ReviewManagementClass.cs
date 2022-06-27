@@ -46,6 +46,7 @@ namespace ProductReviewManagement_LINQ
                 Console.WriteLine("ProductId: " + item.ProductId + " --- Count : " + item.count);
             }
         }
+        //UC5 and UC7
         public void ProductIdAndReview(List<ProductReviewModel> product)
         {
             var result = product.Select(x => (x.ProductId, x.Review));
@@ -62,6 +63,15 @@ namespace ProductReviewManagement_LINQ
             {
                 Console.WriteLine("ProductId: " + item.ProductId + "\tUserId: " + item.UserId + "\tRating: " + item.Rating + "\tReview: " +
                      item.Review + "\tIsLike: " + item.IsLike);
+            }
+        }
+        public void ProductIdAndReviewLINQ(List<ProductReviewModel> product)
+        {
+            var result = product.Select(x => (x.ProductId, x.Review));
+            Console.WriteLine("Product ID\tReview");
+            foreach (var item in result)
+            {
+                Console.WriteLine("\t" + item.ProductId + "\t" + item.Review);
             }
         }
     }
