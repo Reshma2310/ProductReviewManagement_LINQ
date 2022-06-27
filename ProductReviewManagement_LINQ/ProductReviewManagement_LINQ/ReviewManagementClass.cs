@@ -28,7 +28,7 @@ namespace ProductReviewManagement_LINQ
         public void ListOfReviewGreaterThan3(List<ProductReviewModel> product)
         {
             var result = (from list in product
-                          where list.Rating > 3 ||
+                          where list.Rating > 3 &&
                           (list.ProductId == 1 || list.ProductId == 4 || list.ProductId == 9)
                           select list);
             Console.WriteLine("List of reviews Greater than 3 and list of products whose Id is 1, 4 & 9");
@@ -37,6 +37,6 @@ namespace ProductReviewManagement_LINQ
                 Console.WriteLine("Product ID: " + item.ProductId + "\tUser ID: " + item.UserId + "\tRating: " + item.Rating + "\tReview: " + item.Review + "\tIsLike: " + item.IsLike);
 
             }
-        }
+        }        
     }
 }
