@@ -86,14 +86,27 @@ namespace ProductReviewManagement_LINQ
             }
             return table;
         }
-        public void TrueInIsLike(DataTable product)
+        public void TrueInIsLike(DataTable table)
         {            
-            var data = product.AsEnumerable().Where(x => (x.Field<bool>("IsLike") == true));
+            var data = table.AsEnumerable().Where(x => (x.Field<bool>("IsLike") == true));
             Console.WriteLine("ProductId\tUserId\tRating\tReview\tIsLike");
             foreach (var item in data)
             {
                 Console.WriteLine("\t" + item.Field<int>("ProductId") + "\t" + item.Field<int>("UserId") + "\t" +
                     item.Field<double>("Rating") + "\t" + item.Field<string>("Review") + "\t" + item.Field<bool>("IsLike"));
+            }
+        }
+        public void ProductIdAvgRating(DataTable table)
+        {
+            var result = table.AsEnumerable().GroupBy(table => table.Field<int>("ProductID")).Select(field => new
+            {
+                ProductId = field.Key,
+                Average = field.Average(x => x.Field<double>("Rating"))
+            });
+            Console.WriteLine("Average rating of each ProductId");
+            foreach (var item in result)
+            {
+                Console.WriteLine("ProductID: " + item.ProductId + "\tAverage: " + item.Average);
             }
         }
     }
