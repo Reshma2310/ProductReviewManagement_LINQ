@@ -47,7 +47,8 @@ namespace ProductReviewManagement_LINQ
             //reviewManagement.CreateDataTable(product);            
             DataTable table = reviewManagement.CreateDataTable(product);
             //reviewManagement.TrueInIsLike(table);
-            reviewManagement.ProductIdAvgRating(table);
+            //reviewManagement.ProductIdAvgRating(table);
+            reviewManagement.NiceInReview(table);
         }
     }
 }

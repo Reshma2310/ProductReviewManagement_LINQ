@@ -109,5 +109,15 @@ namespace ProductReviewManagement_LINQ
                 Console.WriteLine("ProductID: " + item.ProductId + "\tAverage: " + item.Average);
             }
         }
+        public void NiceInReview(DataTable table)
+        {
+            var data = table.AsEnumerable().Where(x => (x.Field<string>("Review") == "Nice"));
+            Console.WriteLine("ProductId\tUserId\tRating\tReview\tIsLike");
+            foreach (var item in data)
+            {
+                Console.WriteLine("\t" + item.Field<int>("ProductId") + "\t" + item.Field<int>("UserId") + "\t" +
+                    item.Field<double>("Rating") + "\t" + item.Field<string>("Review") + "\t" + item.Field<bool>("IsLike"));
+            }
+        }
     }
 }
