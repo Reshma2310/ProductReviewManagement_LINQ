@@ -119,5 +119,16 @@ namespace ProductReviewManagement_LINQ
                     item.Field<double>("Rating") + "\t" + item.Field<string>("Review") + "\t" + item.Field<bool>("IsLike"));
             }
         }
+        public void OrderByRatingForProductId10(DataTable products)
+        {
+            Console.WriteLine("List of Review who's UserId is 10");
+            var data = products.AsEnumerable().OrderBy(x => (x.Field<double>("Rating"))).Where(x => (x.Field<int>("UserId") == 10));
+            Console.WriteLine("ProductId\tUserId\tRating\tReview\tIsLike");
+            foreach (var item in data)
+            {
+                Console.WriteLine("\t" + item.Field<int>("ProductId") + "\t " + item.Field<int>("UserId") + "\t" +
+                    item.Field<double>("Rating") + "\t" + item.Field<string>("Review") + "\t" + item.Field<bool>("IsLike"));
+            }
+        }
     }
 }
